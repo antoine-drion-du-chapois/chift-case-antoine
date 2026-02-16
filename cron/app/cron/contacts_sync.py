@@ -10,7 +10,7 @@ class ContactsSyncJob(BaseSyncJob):
     def __init__(self):
         super().__init__(
             job_name="contacts_sync",
-            data_repo=ContactRepository(),
+            data_repo=ContactRepository()
         )
 
     def fetch(self, last_sync):
@@ -31,10 +31,10 @@ class ContactsSyncJob(BaseSyncJob):
         return [
             OdooPartner(
                 odoo_id=r["id"],
-                name=r.get("name"),
-                email=r.get("email"),
+                name=r.get("name") or None,
+                email=r.get("email") or None,
                 active=r.get("active", True),
-                write_date=r.get("write_date"),
+                write_date=r.get("write_date") or None,
             )
             for r in raw_records
         ]

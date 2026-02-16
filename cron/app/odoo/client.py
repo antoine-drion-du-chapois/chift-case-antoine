@@ -58,5 +58,8 @@ def _fetch_generic(model: str, last_sync: datetime, fields: list[str]):
         model,
         "search_read",
         [domain],
-        {"fields": fields},
+        {
+            "fields": fields,
+            "context": {"active_test": False},
+        },
     )

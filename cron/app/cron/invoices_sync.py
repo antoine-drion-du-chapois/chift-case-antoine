@@ -10,7 +10,7 @@ class InvoicesSyncJob(BaseSyncJob):
     def __init__(self):
         super().__init__(
             job_name="invoices_sync",
-            data_repo=InvoiceRepository(),
+            data_repo=InvoiceRepository()
         )
 
     def fetch(self, last_sync):

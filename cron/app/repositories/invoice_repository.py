@@ -1,8 +1,8 @@
 from typing import Iterable
-
+from datetime import datetime
 from sqlalchemy.orm import Session
 from sqlalchemy.dialects.postgresql import insert
-
+from app.core.logger import logger
 from app.models.invoice import Invoice
 from app.repositories.abstract_repository import AbstractRepository
 
@@ -10,6 +10,9 @@ from app.repositories.abstract_repository import AbstractRepository
 class InvoiceRepository(AbstractRepository):
 
     def bulk_upsert(self, db, rows):
+        if not rows:
+            return
+
         stmt = insert(Invoice).values(rows)
 
         stmt = stmt.on_conflict_do_update(

@@ -8,6 +8,7 @@ from sqlalchemy import (
     Date,
     Numeric,
     func,
+    Boolean
 )
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import DeclarativeBase
@@ -28,7 +29,6 @@ class Invoice(Base):
 
     name: Mapped[str | None] = mapped_column(String, nullable=True)
 
-    # Exact precision for financial amounts
     amount_total: Mapped[Decimal] = mapped_column(
         Numeric(12, 2),
         nullable=False,

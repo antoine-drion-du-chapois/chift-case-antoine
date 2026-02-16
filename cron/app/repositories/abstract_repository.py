@@ -1,16 +1,21 @@
 from abc import ABC, abstractmethod
 from typing import Iterable, Any
+from datetime import datetime
 from sqlalchemy.orm import Session
 
 
 class AbstractRepository(ABC):
     """
-    Base repository interface for bulk persistence operations.
+    Generic repository interface for bulk synchronization operations.
     """
 
     @abstractmethod
-    def bulk_upsert(self, db: Session, rows: Iterable[dict[str, Any]]):
+    def bulk_upsert(
+        self,
+        db: Session,
+        rows: Iterable[dict[str, Any]],
+    ) -> None:
         """
-        Sets and performs a bulk upsert operation for the given rows.
+        Perform bulk upsert
         """
         pass
