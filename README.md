@@ -7,14 +7,29 @@ Odoo → PostgreSQL synchronization service with incremental cron jobs, REST API
 ## Production Deployment
 
 **Live API:** http://34.77.28.170:8000/
+**API DOC:** http://34.77.28.170:8000/docs
+
+-> Auth info :  
+"username": "admin",
+"password": "admin"
 
 ### Authentication
 
 The API uses **JWT authentication**. To access protected routes:
 
 1. **Login** to obtain an access token:
+
    ```
    POST http://34.77.28.170:8000/auth/login
+   ```
+
+   **Request Body:**
+
+   ```json
+   {
+     "username": "admin",
+     "password": "admin"
+   }
    ```
 
 2. **Include the token** in subsequent requests via the `Authorization` header:
@@ -58,6 +73,7 @@ docker compose up --build
 ```
 
 This will:
+
 - Start PostgreSQL
 - Initialize the database schema
 - Launch cron synchronization jobs
