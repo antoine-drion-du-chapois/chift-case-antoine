@@ -21,6 +21,7 @@ CREATE TABLE invoices (
 );
 
 
+
 CREATE TABLE sync_state (
     job_name TEXT PRIMARY KEY,
     last_sync TIMESTAMP NOT NULL
