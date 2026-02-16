@@ -4,6 +4,7 @@ from decimal import Decimal
 
 
 class InvoiceResponse(BaseModel):
+    id: int
     odoo_id: int
     name: str | None
     amount_total: Decimal
