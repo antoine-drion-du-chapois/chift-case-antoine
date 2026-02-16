@@ -1,18 +1,43 @@
-<!-- prettier-ignore -->
 # Antoine Chift Case
 
-Odoo → PostgreSQL synchronization service with:
-
-- Incremental cron jobs
-- REST API
-- Automatic database initialization
-- Fully orchestrated via Docker Compose
+Odoo → PostgreSQL synchronization service with incremental cron jobs, REST API, automatic database initialization, and full Docker Compose orchestration.
 
 ---
 
-## Environment Variables
+## Production Deployment
 
-A `.env` file **must** be present at the project root with the following variables:
+**Live API:** http://34.77.28.170:8000/
+
+### Authentication
+
+The API uses **JWT authentication**. To access protected routes:
+
+1. **Login** to obtain an access token:
+   ```
+   POST http://34.77.28.170:8000/auth/login
+   ```
+
+2. **Include the token** in subsequent requests via the `Authorization` header:
+   ```
+   Authorization: Bearer <your_token>
+   ```
+
+### Available Endpoints
+
+```
+GET http://34.77.28.170:8000/contacts/
+GET http://34.77.28.170:8000/contacts/{id}
+GET http://34.77.28.170:8000/invoices
+GET http://34.77.28.170:8000/invoices/{id}
+```
+
+---
+
+## Local Deployment
+
+### Prerequisites
+
+Create a `.env` file in the project root with the following variables:
 
 ```env
 DATABASE_URL=
@@ -24,21 +49,18 @@ SECRET_KEY=
 SYNC_INTERVAL_MINUTES=
 ```
 
-## Getting Started
+### Getting Started
 
-From the project root:
+Run the following command from the project root:
 
 ```bash
 docker compose up --build
 ```
 
-This command will:
-
+This will:
 - Start PostgreSQL
 - Initialize the database schema
-- Launch the cron synchronization jobs
+- Launch cron synchronization jobs
 - Start the API server
 
-## URL
-
-Api available at : http://localhost:8000
+**Local API:** http://localhost:8000
