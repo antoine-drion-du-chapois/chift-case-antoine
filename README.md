@@ -15,9 +15,9 @@ Odoo → PostgreSQL synchronization service with:
 A `.env` file **must** be present at the project root with the following variables:
 
 ```env
-DATABASE_URL=postgresql://postgres:postgres@db:5432/contacts_db
+DATABASE_URL=
 ODOO_URL=
-ODOO_DB=t
+ODOO_DB=
 ODOO_USERNAME=
 ODOO_PASSWORD=
 SECRET_KEY=
