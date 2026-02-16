@@ -11,7 +11,7 @@ class Settings:
         self.ODOO_DB: str = os.getenv("ODOO_DB")
         self.ODOO_USERNAME: str = os.getenv("ODOO_USERNAME")
         self.ODOO_PASSWORD: str = os.getenv("ODOO_PASSWORD")
-        self.SYNC_INTERVAL_MINUTE: str = os.getenv("SYNC_INTERVAL_MINUTES")
+        self.SYNC_INTERVAL_MINUTE: int = os.getenv("SYNC_INTERVAL_MINUTES")
 
         required = [
             self.DATABASE_URL,

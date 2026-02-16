@@ -8,7 +8,7 @@ from app.core.config import settings
 def start_scheduler():
     scheduler = BlockingScheduler()
 
-    interval = int(settings.SYNC_INTERVAL_MINUTE, 5)
+    interval = int(settings.SYNC_INTERVAL_MINUTE)
 
     scheduler.add_job(
         run_all_jobs,
