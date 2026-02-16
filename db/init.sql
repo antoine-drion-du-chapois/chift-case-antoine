@@ -6,7 +6,7 @@ CREATE TABLE contacts (
     active BOOLEAN,
     write_date TIMESTAMP,
     created_at TIMESTAMP DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
 );
 
 CREATE TABLE invoices (
@@ -17,7 +17,7 @@ CREATE TABLE invoices (
     invoice_date DATE,
     write_date TIMESTAMP NOT NULL,
     created_at TIMESTAMP DEFAULT NOW() NOT NULL,
-    updated_at TIMESTAMP DEFAULT NOW() NOT NULL,
+    updated_at TIMESTAMP DEFAULT NOW() NOT NULL
 );
 
 
