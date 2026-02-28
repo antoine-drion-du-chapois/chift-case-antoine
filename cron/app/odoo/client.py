@@ -10,7 +10,6 @@ RETRYABLE_EXCEPTIONS = (
     socket.timeout,
     ConnectionError,
     xmlrpc.client.ProtocolError,
-    xmlrpc.client.Fault,
 )
 
 
@@ -35,11 +34,12 @@ def _get_uid():
 
 @retry(
     stop=stop_after_attempt(3),
+    # 2 -> 2**2 -> 2**3
     wait=wait_exponential(multiplier=1, min=2, max=10),
     retry=retry_if_exception_type(RETRYABLE_EXCEPTIONS),
     reraise=True,
 )
-def _fetch_generic(model: str, last_sync: datetime, fields: list[str]):
+def fetch_generic(model: str, last_sync: datetime, fields: list[str]):
     uid = _get_uid()
 
     models = xmlrpc.client.ServerProxy(
@@ -48,7 +48,7 @@ def _fetch_generic(model: str, last_sync: datetime, fields: list[str]):
     )
 
     domain = [
-        ("write_date", ">", last_sync.strftime("%Y-%m-%d %H:%M:%S"))
+        ("write_date", ">=", last_sync.strftime("%Y-%m-%d %H:%M:%S"))
     ]
 
     return models.execute_kw(

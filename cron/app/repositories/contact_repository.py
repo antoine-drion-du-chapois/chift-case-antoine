@@ -25,4 +25,9 @@ class ContactRepository:
             },
         )
 
-        db.execute(stmt)
+        result = db.execute(stmt)
+
+        if result.rowcount != len(rows):
+            logger.warning(
+                f"Expected {len(rows)} rows affected, got {result.rowcount}"
+            )

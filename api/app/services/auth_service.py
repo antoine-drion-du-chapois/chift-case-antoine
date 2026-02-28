@@ -27,6 +27,7 @@ def authenticate_user(db, username: str, password: str):
             "Authentication error for username=%s : %s",
             username,
             str(e),
+            # traceback
             exc_info=True
         )
         return None

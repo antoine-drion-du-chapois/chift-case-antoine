@@ -4,7 +4,7 @@ CREATE TABLE contacts (
     name TEXT,
     email TEXT,
     active BOOLEAN,
-    write_date TIMESTAMP,
+    write_date TIMESTAMP NOT NULL,
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
 );

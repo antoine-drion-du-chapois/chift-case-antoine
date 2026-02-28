@@ -16,11 +16,11 @@ class Contact(Base):
         index=True,
     )
 
-    name: Mapped[str | None] = mapped_column(String, nullable=True)
+    name: Mapped[str] = mapped_column(String, nullable=True)
     email: Mapped[str | None] = mapped_column(String, nullable=True)
     active: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     write_date: Mapped[datetime | None] = mapped_column(
-        DateTime, nullable=True)
+        DateTime, nullable=False)
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime,

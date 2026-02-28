@@ -1,7 +1,7 @@
 from app.cron.base_sync import BaseSyncJob
 from app.models.invoice import Invoice
 from app.repositories.invoice_repository import InvoiceRepository
-from app.odoo.client import _fetch_generic
+from app.odoo.client import fetch_generic
 from app.schema.invoice import OdooInvoice
 
 
@@ -22,7 +22,7 @@ class InvoicesSyncJob(BaseSyncJob):
             "write_date",
         ]
 
-        raw_records = _fetch_generic(
+        raw_records = fetch_generic(
             model="account.move",
             last_sync=last_sync,
             fields=fields,
@@ -34,7 +34,7 @@ class InvoicesSyncJob(BaseSyncJob):
                 name=r.get("name") or None,
                 amount_total=r["amount_total"],
                 invoice_date=r.get("invoice_date") or None,
-                write_date=r.get("write_date") or None,
+                write_date=r.get("write_date"),
             )
             for r in raw_records
         ]

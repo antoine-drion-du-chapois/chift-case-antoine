@@ -80,7 +80,7 @@ class BaseSyncJob(ABC):
                     f"[{self.job_name}] No new records. Sync finished."
                 )
                 return
-
+            # transformation de objets Pydantic à un dict
             rows = [r.model_dump() for r in records]
 
             max_write_date = max(
