@@ -83,6 +83,11 @@ class BaseSyncJob(ABC):
             # transformation de objets Pydantic à un dict
             rows = [r.model_dump() for r in records]
 
+            logger.info(
+                f"{rows[:5]}... "  # Log sample rows for debugging
+                f"for upsert"
+            )
+
             max_write_date = max(
                 (r.write_date for r in records if r.write_date),
                 default=last_sync
