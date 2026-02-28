@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted   # ← runs directly on your local VM
+    runs-on: self-hosted   
 
     steps:
       - name: Checkout code
