@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted   
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
@@ -15,7 +15,7 @@ jobs:
 
       - name: Deploy app
         run: |
-          cd /home/antoi/chift-case-antoine
+          cd /home/antoine/chift-case-antoine
           git pull
           docker compose down
           docker compose up -d --build
